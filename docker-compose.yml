@@ -8,9 +8,10 @@ services:
       - "${PORTS_DNS_UDP}"   # DNS UDP
       - "${PORTS_WEB}"       # Interface Web
     volumes:
-      - ${VOL_ADGUARD_CONFIG}
-      - ${VOL_TZ}
-      - ${VOL_LOCALTIME}
+      - ${VOL01}
+      - ${VOL02}
+      - ${VOL03}
+      - ${VOL04}
     networks:
       network-share:
         ipv4_address: ${IPV4_ADGUARD}
