@@ -1,0 +1,23 @@
+services:
+  adguard-home:
+    image: adguard/adguardhome:latest
+    container_name: ${ADGUARD_CONTAINER}
+    restart: unless-stopped
+    ports:
+      - "${PORTS_DNS_TCP}"   # DNS TCP
+      - "${PORTS_DNS_UDP}"   # DNS UDP
+      - "${PORTS_WEB}"       # Interface Web
+    volumes:
+      - ${VOL_ADGUARD_CONFIG}
+      - ${VOL_TZ}
+      - ${VOL_LOCALTIME}
+    networks:
+      network-share:
+        ipv4_address: ${IPV4_ADGUARD}
+
+networks:
+  network-share:
+    external: true
+    ipam:
+      config:
+        - subnet: ${SUBNET}
